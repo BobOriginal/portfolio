@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+    <title>Portfolio Tom CONAN - Contact</title>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <header>
+        <div class="header-content">
+           <a href="index.html" class="logo-text">
+                <img src="images/logo.png" alt="Tom Conan Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ACCUEIL</a></li>
+                    <li><a href="aProposDeMoi.html">À propos de moi</a></li>
+                    <li><a href="projet.html">Mes Projets</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-section page-content">
+            <h1>ME CONTACTER</h1>
+            <div class="contact-intro">
+                <p>N'hésitez pas à me contacter pour discuter d'opportunités professionnelles, de projets collaboratifs ou simplement pour échanger sur nos passions communes en informatique.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info-card">
+                    <h3>Informations de contact</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:tom.conan1@gmail.com">tom.conan1@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p><a href="tel:+33629341675">06 29 34 16 75</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Localisation</h4>
+                            <p>Lannion, Bretagne, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🎓</div>
+                        <div class="contact-details">
+                            <h4>Statut</h4>
+                            <p>Étudiant en BUT Informatique</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-card">
+                    <h3>Envoyez-moi un message</h3>
+                    <form class="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="nom">Nom complet *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Adresse email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sujet">Sujet *</label>
+                            <select id="sujet" name="sujet" required>
+                                <option value="">Choisissez un sujet</option>
+                                <option value="stage">Opportunité de stage</option>
+                                <option value="alternance">Proposition d'alternance</option>
+                                <option value="projet">Collaboration sur un projet</option>
+                                <option value="emploi">Offre d'emploi</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Décrivez votre demande ou votre projet..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <h3>Retrouvez-moi sur</h3>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/tom-conan-18487424a/" target="_blank" class="social-link">
+                        <span class="social-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/BobOriginal" target="_blank" class="social-link">
+                        <span class="social-icon">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="CV_TOM_CONAN.pdf" download class="social-link">
+                        <span class="social-icon">📄</span>
+                        <span>Télécharger CV</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="meContacter">
+        <div class="footer-content">
+            <h2>Me contacter</h2>
+            <ul class="contact-info">
+                <li>téléphone : 06 29 34 16 75</li>
+                <li><a href="mailto:tom.conan1@gmail.com">tom.conan1@gmail.com</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du formulaire de contact
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des données du formulaire
+            const formData = new FormData(this);
+            const nom = formData.get('nom');
+            const email = formData.get('email');
+            const sujet = formData.get('sujet');
+            const message = formData.get('message');
+            
+            // Validation simple
+            if (!nom || !email || !sujet || !message) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
+            // Simulation d'envoi de message
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Envoi en cours...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.');
+                this.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 2000);
+        });
+        
+        // Animation au scroll pour les éléments de contact
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Application de l'animation aux éléments
+        document.querySelectorAll('.contact-item, .form-group, .social-link').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
