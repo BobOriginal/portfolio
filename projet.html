@@ -38,16 +38,23 @@
         }
         
         .project-image-vertical {
-            width: 200px;
-            min-width: 200px;
+            width: 250px;
+            min-width: 250px;
+            height: 200px;
             background: linear-gradient(135deg, var(--menu-bg), var(--home-bg));
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 5px;
         }
         
-        .project-placeholder-vertical {
-            font-size: 3rem;
+        .project-placeholder-vertical img {
+            width: 100%;
+            height: 100%;
+            max-width: 240px;
+            max-height: 190px;
+            object-fit: contain;
+            border-radius: 8px;
         }
         
         .project-content-vertical {
@@ -117,6 +124,189 @@
             font-size: 0.95rem;
         }
         
+        /* Variables CSS pour les couleurs */
+        :root {
+            --primary-green: #00D646;
+            --menu-bg: #324158;
+            --home-bg: #657082;
+            --home-container: #091330;
+            --projects-bg: #2D2D2D;
+            --text-white: #ffffff;
+            --text-gray: #bdc3c7;
+            --text-dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--home-bg);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--menu-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text img {
+            height: 40px;
+            max-width: 120px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-green);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 100px;
+            padding-top: 150px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Page Content Common */
+        .page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: var(--projects-bg);
+            border-radius: 15px;
+            color: var(--text-white);
+        }
+
+        .projects-section h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-green);
+        }
+
+        .projects-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .projects-intro p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--menu-bg);
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .footer-content h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info li {
+            color: var(--text-white);
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-white);
+        }
+        
         /* Responsive pour la disposition verticale */
         @media (max-width: 768px) {
             .project-header {
@@ -125,7 +315,13 @@
             
             .project-image-vertical {
                 width: 100%;
-                height: 150px;
+                height: 180px;
+                padding: 5px;
+            }
+            
+            .project-placeholder-vertical img {
+                max-width: 170px;
+                max-height: 170px;
             }
             
             .projects-list {
@@ -163,25 +359,29 @@
                     <div class="project-header">
                         <div class="project-image-vertical">
                             <div class="project-placeholder-vertical">
-                                <span>📱</span>
+                                <img src="images/Danse.png" alt="images dance">
                             </div>
                         </div>
                         <div class="project-content-vertical">
                             <div class="project-title-date">
-                                <h3>Application Mobile</h3>
-                                <div class="project-date">Mars 2024</div>
+                                <h3>Ella danse developemment</h3>
+                                <div class="project-date">Juin 2025</div>
                             </div>
-                            <p>Développement d'une application mobile en utilisant les technologies modernes pour une expérience utilisateur optimale.</p>
+                            <p>Ce projet est la suite du projet Ella dance gestion de projet. Où nous passons au devellopemet d'une IHM du lot des cotisation annulle
+                                 c'est a dire que l'on doit coder la création,modification,suppresion et l'affigage des cotisation. Mais également l'affichage de éléve qui n'ont pas payer et pouvoire leurs envoyer un rappel.
+                                 Et pour finir la création de facture pour les cotisation automatique.
+                                </p>
                             <div class="project-tech-vertical">
-                                <span class="tech-tag-vertical">Java</span>
-                                <span class="tech-tag-vertical">Android</span>
-                                <span class="tech-tag-vertical">SQLite</span>
+                                <span class="tech-tag-vertical">JavaFX</span>
+                                <span class="tech-tag-vertical">github</span>
+                                <span class="tech-tag-vertical">visual paradigm</span>
+                                <span class="tech-tag-vertical">scene builder</span>
                             </div>
                         </div>
                     </div>
                     <div class="project-experience">
                         <h4>Compétences et expériences acquises :</h4>
-                        <p>Ce projet m'a permis de maîtriser le développement Android natif, d'apprendre la gestion des bases de données locales avec SQLite et de comprendre les principes de l'UX/UI mobile. J'ai également développé mes compétences en architecture logicielle avec le pattern MVP et appris à optimiser les performances des applications mobiles.</p>
+                        <p>a faire</p>
                     </div>
                 </div>
 
@@ -189,26 +389,26 @@
                     <div class="project-header">
                         <div class="project-image-vertical">
                             <div class="project-placeholder-vertical">
-                                <span>🌐</span>
+                                <img src="images/Danse.png" alt="image danse">
                             </div>
                         </div>
                         <div class="project-content-vertical">
                             <div class="project-title-date">
-                                <h3>Site Web Dynamique</h3>
-                                <div class="project-date">Janvier 2024</div>
+                                <h3>Ella danse gestion de projet</h3>
+                                <div class="project-date">mai 2025</div>
                             </div>
-                            <p>Création d'un site web responsive avec base de données intégrée et interface d'administration.</p>
+                            <p>Recuielle des besoin pour l'association (fictive) Ella dance puis création d'un document sel dans une premier partie. Puis création d'un
+                                OT, OF, matrice RACI, estimation des charges du cas Ella Danse</p>
                             <div class="project-tech-vertical">
-                                <span class="tech-tag-vertical">HTML/CSS</span>
-                                <span class="tech-tag-vertical">JavaScript</span>
-                                <span class="tech-tag-vertical">PHP</span>
-                                <span class="tech-tag-vertical">MySQL</span>
+                                <span class="tech-tag-vertical">Gloomaps</span>
+                                <span class="tech-tag-vertical">figma</span>
+                                <span class="tech-tag-vertical">project libre</span>
                             </div>
                         </div>
                     </div>
                     <div class="project-experience">
                         <h4>Compétences et expériences acquises :</h4>
-                        <p>Ce projet full-stack m'a enseigné l'architecture web moderne, la sécurisation des données avec PHP et MySQL, et l'importance du responsive design. J'ai approfondi mes connaissances en JavaScript moderne (ES6+) et découvert l'importance de la validation côté client et serveur pour une application robuste.</p>
+                        <p>a faire</p>
                     </div>
                 </div>
 
@@ -216,15 +416,15 @@
                     <div class="project-header">
                         <div class="project-image-vertical">
                             <div class="project-placeholder-vertical">
-                                <span>🐍</span>
+                                <img src="images/exploitation_base_de_donnee1.png" alt="Analyse de Données">
                             </div>
                         </div>
                         <div class="project-content-vertical">
                             <div class="project-title-date">
                                 <h3>Analyse de Données</h3>
-                                <div class="project-date">Novembre 2023</div>
+                                <div class="project-date">mai 2025</div>
                             </div>
-                            <p>Projet d'analyse et de visualisation de données avec des algorithmes de machine learning.</p>
+                            <p>Analise des donner d'une bases de donner crée presdement afin de trouver des variable corréler simple et multiple</p>
                             <div class="project-tech-vertical">
                                 <span class="tech-tag-vertical">Python</span>
                                 <span class="tech-tag-vertical">Pandas</span>
@@ -235,7 +435,7 @@
                     </div>
                     <div class="project-experience">
                         <h4>Compétences et expériences acquises :</h4>
-                        <p>Ce projet m'a initié au monde de la data science et du machine learning. J'ai appris à nettoyer et analyser de grandes quantités de données, à créer des visualisations pertinentes et à implémenter des algorithmes d'apprentissage supervisé. Une excellente introduction aux statistiques appliquées et à l'intelligence artificielle.</p>
+                        <p>a faire</p>
                     </div>
                 </div>
 
@@ -243,25 +443,24 @@
                     <div class="project-header">
                         <div class="project-image-vertical">
                             <div class="project-placeholder-vertical">
-                                <span>🎮</span>
+                                <img src="images/creaBDD.png" alt="image uml bdd">
                             </div>
                         </div>
                         <div class="project-content-vertical">
                             <div class="project-title-date">
-                                <h3>Jeu Interactif</h3>
-                                <div class="project-date">Septembre 2023</div>
+                                <h3>Création bases de donnée</h3>
+                                <div class="project-date">avril 2025</div>
                             </div>
-                            <p>Développement d'un jeu interactif avec interface graphique et système de score.</p>
+                            <p>Création d'une bases de donner d'apres un diagrame UML fourrnie et peuplement de cette base a partir de fichier csv à adapter</p>
                             <div class="project-tech-vertical">
-                                <span class="tech-tag-vertical">Java</span>
-                                <span class="tech-tag-vertical">JavaFX</span>
-                                <span class="tech-tag-vertical">Design Patterns</span>
+                                <span class="tech-tag-vertical">UML</span>
+                                <span class="tech-tag-vertical">SQL</span>
                             </div>
                         </div>
                     </div>
                     <div class="project-experience">
                         <h4>Compétences et expériences acquises :</h4>
-                        <p>Le développement de ce jeu m'a fait découvrir la programmation orientée objet avancée et l'importance des design patterns. J'ai appris à gérer les événements utilisateur, à optimiser les performances graphiques et à structurer un code complexe de manière maintenable. Une belle leçon sur l'architecture logicielle et la gestion de projet.</p>
+                        <p>a faire</p>
                     </div>
                 </div>
 
@@ -269,25 +468,23 @@
                     <div class="project-header">
                         <div class="project-image-vertical">
                             <div class="project-placeholder-vertical">
-                                <span>💾</span>
+                                <img src="images/teamBulding.jpeg" alt="team bulding ">
                             </div>
                         </div>
                         <div class="project-content-vertical">
                             <div class="project-title-date">
-                                <h3>Base de Données</h3>
-                                <div class="project-date">Mai 2023</div>
+                                <h3>Organisation d'un travail d'équipe</h3>
+                                <div class="project-date">avril 2025</div>
                             </div>
-                            <p>Conception et implémentation d'une base de données complexe avec optimisation des requêtes.</p>
+                            <p>Création d'une journer de team bulding pour une entreprise. réalisations du infographie ainsi qu'une video de 1min pour présenter ce team bulding. Présentation oral du projet parcours budjet </p>
                             <div class="project-tech-vertical">
-                                <span class="tech-tag-vertical">PostgreSQL</span>
-                                <span class="tech-tag-vertical">MongoDB</span>
-                                <span class="tech-tag-vertical">Redis</span>
+                                <span class="tech-tag-vertical">filmora</span>
                             </div>
                         </div>
                     </div>
                     <div class="project-experience">
                         <h4>Compétences et expériences acquises :</h4>
-                        <p>Ce projet m'a permis de maîtriser la modélisation de données et l'optimisation de requêtes SQL complexes. J'ai découvert les différences entre bases relationnelles et NoSQL, appris l'importance de l'indexation et des performances. L'utilisation de Redis m'a sensibilisé aux enjeux de cache et de scalabilité des applications.</p>
+                        <p>a faire</p>
                     </div>
                 </div>
 
@@ -295,25 +492,25 @@
                     <div class="project-header">
                         <div class="project-image-vertical">
                             <div class="project-placeholder-vertical">
-                                <span>🤖</span>
+                                <img src="images/reseaux informatique.png" alt="réseau informatique">
                             </div>
                         </div>
                         <div class="project-content-vertical">
                             <div class="project-title-date">
-                                <h3>Intelligence Artificielle</h3>
-                                <div class="project-date">Février 2023</div>
+                                <h3>Installation de services réseau</h3>
+                                <div class="project-date">avril 2025</div>
                             </div>
-                            <p>Implémentation d'algorithmes d'IA pour la résolution de problèmes complexes.</p>
+                            <p>Instalation d'un server apache pour quelque page web.</p>
                             <div class="project-tech-vertical">
-                                <span class="tech-tag-vertical">Python</span>
-                                <span class="tech-tag-vertical">TensorFlow</span>
-                                <span class="tech-tag-vertical">Neural Networks</span>
+                                <span class="tech-tag-vertical">Apache</span>
+                                <span class="tech-tag-vertical">PHP</span>
+                                <span class="tech-tag-vertical">MySQL</span>
                             </div>
                         </div>
                     </div>
                     <div class="project-experience">
                         <h4>Compétences et expériences acquises :</h4>
-                        <p>Mon premier pas dans l'intelligence artificielle m'a ouvert les yeux sur les possibilités du machine learning moderne. J'ai appris les fondamentaux des réseaux de neurones, compris l'importance des données d'entraînement et découvert TensorFlow. Ce projet m'a donné envie d'approfondir mes connaissances en IA et en deep learning.</p>
+                        <p>a faire</p>
                     </div>
                 </div>
             </div>
