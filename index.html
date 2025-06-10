@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+    <title>Portfolio Tom CONAN - Accueil</title>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        /* Style spécifique pour augmenter les marges de la page d'accueil */
+        .index-page .page-content {
+            max-width: 900px; /* Réduit de 1200px à 900px pour augmenter les marges */
+            margin: 0 auto;
+            padding: 50px 40px; /* Augmentation du padding horizontal */
+
+        }
+        
+        .index-page .hero-section {
+            display: grid;
+            grid-template-columns: 2fr;
+            gap: 60px;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+            text-align: left; /* Alignement à gauche pour la première section */
+        }
+        
+        /* Modification pour la transparence de la deuxième section (hero-card) */
+        .hero-card {
+            grid-row-start: 2;
+            background: rgba(9, 19, 48, 0.7); /* Plus transparent pour voir l'image de fond */
+            backdrop-filter: blur(5px); /* Réduction du blur pour plus de transparence */
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Ombre plus légère */
+            border: 2px solid rgba(0, 214, 70, 0.3); /* Bordure plus visible */
+            transition: all 0.3s ease;
+        }
+        
+        .hero-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+            background: rgba(9, 19, 48, 0.8); /* Légèrement moins transparent au hover */
+        }
+        
+        /* Amélioration de la lisibilité du texte dans la section transparente */
+        .hero-card p {
+            color: rgba(189, 195, 199, 0.9); /* Légèrement plus opaque pour la lisibilité */
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Ombre de texte pour améliorer la lisibilité */
+        }
+        
+        .hero-card .logo-large {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre de texte */
+        }
+        
+        /* Amélioration du contraste pour le bouton */
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary-green), #00aa38);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour plus de contraste */
+        }
+        
+        /* Responsive pour maintenir la lisibilité sur mobile */
+        @media (max-width: 768px) {
+            .index-page .page-content {
+                padding: 30px 20px;
+            }
+            
+            .index-page .hero-section {
+                padding: 0 15px;
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center; /* Retour au centre sur mobile */
+            }
+            
+            .hero-card {
+                background: rgba(9, 19, 48, 0.85); /* Plus opaque sur mobile pour la lisibilité */
+            }
+        }
+        
+        /* Styles pour les variables CSS */
+        :root {
+            --primary-green: #00D646;
+            --menu-bg: #324158;
+            --home-bg: #657082;
+            --home-container: #091330;
+            --projects-bg: #2D2D2D;
+            --text-white: #ffffff;
+            --text-gray: #bdc3c7;
+            --text-dark: #2c3e50;
+        }
+        
+        /* Styles de base pour le body avec image de fond */
+        .index-background {
+            background: url("images/TOM_CONAN_2.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed; /* Image fixe pendant le scroll */
+        }
+        
+        /* Header styles basiques */
+        header {
+            background: var(--menu-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text img {
+            height: 40px;
+            max-width: 120px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-green);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* Main content */
+        main {
+            padding-bottom: 100px;
+            padding-top: 150px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero text styles */
+        .hero-text {
+            color: var(--text-white);
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombre pour contraste avec l'image */
+        }
+
+        .hero-text .highlight {
+            color: var(--primary-green);
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Ombre pour contraste */
+        }
+
+        /* Footer */
+        footer {
+            background: var(--menu-bg);
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .footer-content h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info li {
+            color: var(--text-white);
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-white);
+        }
+    </style>
+</head>
+<body class="index-background index-page">
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-text">
+                <img src="images/logo.png" alt="Tom Conan Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">ACCUEIL</a></li>
+                    <li><a href="aProposDeMoi.html">À propos de moi</a></li>
+                    <li><a href="projet.html">Mes Projets</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-content">
+            <div class="hero-section">
+                <div class="hero-text">
+                    <h1>JE <span class="highlight">SUIS</span><br>TOM<br>CONAN<span class="highlight">.</span></h1>
+                    <h2>Itinéraire d'un Étudiant en Informatique</h2>
+                </div>
+                <div class="hero-card">
+                    <div class="logo-large">Conan</div>
+                    <p>Je vous invite à explorer mes projets, à découvrir les idées qui m'animent et à en apprendre davantage sur mon approche du travail. Que vous soyez ici par curiosité ou pour envisager une collaboration, j'espère que ce portfolio saura vous inspirer.</p>
+                    <a href="CV_TOM_CONAN.pdf" class="cta-button" download>TÉLÉCHARGER LE CV</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="meContacter">
+        <div class="footer-content">
+            <h2>Me contacter</h2>
+            <ul class="contact-info">
+                <li>téléphone : 06 29 34 16 75</li>
+                <li><a href="mailto:tom.conan1@gmail.com">tom.conan1@gmail.com</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

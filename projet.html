@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+    <title>Portfolio Tom CONAN - Mes Projets</title>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        /* Styles spécifiques pour la nouvelle disposition verticale des projets */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .project-card-vertical {
+            background: var(--home-container);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 214, 70, 0.1);
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+        
+        .project-card-vertical:hover {
+            transform: translateX(5px);
+            border-color: var(--primary-green);
+            box-shadow: 0 10px 30px rgba(0, 214, 70, 0.2);
+        }
+        
+        .project-header {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .project-image-vertical {
+            width: 200px;
+            min-width: 200px;
+            background: linear-gradient(135deg, var(--menu-bg), var(--home-bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-placeholder-vertical {
+            font-size: 3rem;
+        }
+        
+        .project-content-vertical {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .project-title-date {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        
+        .project-content-vertical h3 {
+            color: var(--primary-green);
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+        
+        .project-date {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .project-content-vertical p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .project-tech-vertical {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tech-tag-vertical {
+            background: var(--primary-green);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .project-experience {
+            padding: 0 25px 25px 25px;
+            border-top: 1px solid rgba(0, 214, 70, 0.2);
+            margin-top: 15px;
+        }
+        
+        .project-experience h4 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            padding-top: 15px;
+        }
+        
+        .project-experience p {
+            color: var(--text-gray);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive pour la disposition verticale */
+        @media (max-width: 768px) {
+            .project-header {
+                flex-direction: column;
+            }
+            
+            .project-image-vertical {
+                width: 100%;
+                height: 150px;
+            }
+            
+            .projects-list {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-text">
+                <img src="images/logo copie.jpg" alt="Tom Conan Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ACCUEIL</a></li>
+                    <li><a href="aProposDeMoi.html">À propos de moi</a></li>
+                    <li><a href="projet.html" class="active">Mes Projets</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="projects-section page-content">
+            <h1>MES PROJETS</h1>
+            <div class="projects-intro">
+                <p>Découvrez mes réalisations et projets développés durant ma formation et mes expériences personnelles.</p>
+            </div>
+            
+            <div class="projects-list">
+                <div class="project-card-vertical">
+                    <div class="project-header">
+                        <div class="project-image-vertical">
+                            <div class="project-placeholder-vertical">
+                                <span>📱</span>
+                            </div>
+                        </div>
+                        <div class="project-content-vertical">
+                            <div class="project-title-date">
+                                <h3>Application Mobile</h3>
+                                <div class="project-date">Mars 2024</div>
+                            </div>
+                            <p>Développement d'une application mobile en utilisant les technologies modernes pour une expérience utilisateur optimale.</p>
+                            <div class="project-tech-vertical">
+                                <span class="tech-tag-vertical">Java</span>
+                                <span class="tech-tag-vertical">Android</span>
+                                <span class="tech-tag-vertical">SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-experience">
+                        <h4>Compétences et expériences acquises :</h4>
+                        <p>Ce projet m'a permis de maîtriser le développement Android natif, d'apprendre la gestion des bases de données locales avec SQLite et de comprendre les principes de l'UX/UI mobile. J'ai également développé mes compétences en architecture logicielle avec le pattern MVP et appris à optimiser les performances des applications mobiles.</p>
+                    </div>
+                </div>
+
+                <div class="project-card-vertical">
+                    <div class="project-header">
+                        <div class="project-image-vertical">
+                            <div class="project-placeholder-vertical">
+                                <span>🌐</span>
+                            </div>
+                        </div>
+                        <div class="project-content-vertical">
+                            <div class="project-title-date">
+                                <h3>Site Web Dynamique</h3>
+                                <div class="project-date">Janvier 2024</div>
+                            </div>
+                            <p>Création d'un site web responsive avec base de données intégrée et interface d'administration.</p>
+                            <div class="project-tech-vertical">
+                                <span class="tech-tag-vertical">HTML/CSS</span>
+                                <span class="tech-tag-vertical">JavaScript</span>
+                                <span class="tech-tag-vertical">PHP</span>
+                                <span class="tech-tag-vertical">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-experience">
+                        <h4>Compétences et expériences acquises :</h4>
+                        <p>Ce projet full-stack m'a enseigné l'architecture web moderne, la sécurisation des données avec PHP et MySQL, et l'importance du responsive design. J'ai approfondi mes connaissances en JavaScript moderne (ES6+) et découvert l'importance de la validation côté client et serveur pour une application robuste.</p>
+                    </div>
+                </div>
+
+                <div class="project-card-vertical">
+                    <div class="project-header">
+                        <div class="project-image-vertical">
+                            <div class="project-placeholder-vertical">
+                                <span>🐍</span>
+                            </div>
+                        </div>
+                        <div class="project-content-vertical">
+                            <div class="project-title-date">
+                                <h3>Analyse de Données</h3>
+                                <div class="project-date">Novembre 2023</div>
+                            </div>
+                            <p>Projet d'analyse et de visualisation de données avec des algorithmes de machine learning.</p>
+                            <div class="project-tech-vertical">
+                                <span class="tech-tag-vertical">Python</span>
+                                <span class="tech-tag-vertical">Pandas</span>
+                                <span class="tech-tag-vertical">Matplotlib</span>
+                                <span class="tech-tag-vertical">Scikit-learn</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-experience">
+                        <h4>Compétences et expériences acquises :</h4>
+                        <p>Ce projet m'a initié au monde de la data science et du machine learning. J'ai appris à nettoyer et analyser de grandes quantités de données, à créer des visualisations pertinentes et à implémenter des algorithmes d'apprentissage supervisé. Une excellente introduction aux statistiques appliquées et à l'intelligence artificielle.</p>
+                    </div>
+                </div>
+
+                <div class="project-card-vertical">
+                    <div class="project-header">
+                        <div class="project-image-vertical">
+                            <div class="project-placeholder-vertical">
+                                <span>🎮</span>
+                            </div>
+                        </div>
+                        <div class="project-content-vertical">
+                            <div class="project-title-date">
+                                <h3>Jeu Interactif</h3>
+                                <div class="project-date">Septembre 2023</div>
+                            </div>
+                            <p>Développement d'un jeu interactif avec interface graphique et système de score.</p>
+                            <div class="project-tech-vertical">
+                                <span class="tech-tag-vertical">Java</span>
+                                <span class="tech-tag-vertical">JavaFX</span>
+                                <span class="tech-tag-vertical">Design Patterns</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-experience">
+                        <h4>Compétences et expériences acquises :</h4>
+                        <p>Le développement de ce jeu m'a fait découvrir la programmation orientée objet avancée et l'importance des design patterns. J'ai appris à gérer les événements utilisateur, à optimiser les performances graphiques et à structurer un code complexe de manière maintenable. Une belle leçon sur l'architecture logicielle et la gestion de projet.</p>
+                    </div>
+                </div>
+
+                <div class="project-card-vertical">
+                    <div class="project-header">
+                        <div class="project-image-vertical">
+                            <div class="project-placeholder-vertical">
+                                <span>💾</span>
+                            </div>
+                        </div>
+                        <div class="project-content-vertical">
+                            <div class="project-title-date">
+                                <h3>Base de Données</h3>
+                                <div class="project-date">Mai 2023</div>
+                            </div>
+                            <p>Conception et implémentation d'une base de données complexe avec optimisation des requêtes.</p>
+                            <div class="project-tech-vertical">
+                                <span class="tech-tag-vertical">PostgreSQL</span>
+                                <span class="tech-tag-vertical">MongoDB</span>
+                                <span class="tech-tag-vertical">Redis</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-experience">
+                        <h4>Compétences et expériences acquises :</h4>
+                        <p>Ce projet m'a permis de maîtriser la modélisation de données et l'optimisation de requêtes SQL complexes. J'ai découvert les différences entre bases relationnelles et NoSQL, appris l'importance de l'indexation et des performances. L'utilisation de Redis m'a sensibilisé aux enjeux de cache et de scalabilité des applications.</p>
+                    </div>
+                </div>
+
+                <div class="project-card-vertical">
+                    <div class="project-header">
+                        <div class="project-image-vertical">
+                            <div class="project-placeholder-vertical">
+                                <span>🤖</span>
+                            </div>
+                        </div>
+                        <div class="project-content-vertical">
+                            <div class="project-title-date">
+                                <h3>Intelligence Artificielle</h3>
+                                <div class="project-date">Février 2023</div>
+                            </div>
+                            <p>Implémentation d'algorithmes d'IA pour la résolution de problèmes complexes.</p>
+                            <div class="project-tech-vertical">
+                                <span class="tech-tag-vertical">Python</span>
+                                <span class="tech-tag-vertical">TensorFlow</span>
+                                <span class="tech-tag-vertical">Neural Networks</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-experience">
+                        <h4>Compétences et expériences acquises :</h4>
+                        <p>Mon premier pas dans l'intelligence artificielle m'a ouvert les yeux sur les possibilités du machine learning moderne. J'ai appris les fondamentaux des réseaux de neurones, compris l'importance des données d'entraînement et découvert TensorFlow. Ce projet m'a donné envie d'approfondir mes connaissances en IA et en deep learning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="meContacter">
+        <div class="footer-content">
+            <h2>Me contacter</h2>
+            <ul class="contact-info">
+                <li>téléphone : 06 29 34 16 75</li>
+                <li><a href="mailto:tom.conan1@gmail.com">tom.conan1@gmail.com</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
