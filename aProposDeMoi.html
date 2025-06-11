@@ -4,7 +4,406 @@
     <title>Portfolio Tom CONAN - À propos de moi</title>
     <meta charset="utf8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        :root {
+            --primary-green: #00D646;
+            --menu-bg: #324158;
+            --home-bg: #657082;
+            --home-container: #091330;
+            --projects-bg: #2D2D2D;
+            --text-white: #ffffff;
+            --text-gray: #bdc3c7;
+            --text-dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--home-bg);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-white);
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--menu-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text img {
+            height: 40px;
+            max-width: 120px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-green);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 100px;
+            padding-top: 150px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* About Section */
+        .about-section h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-green);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .about-text {
+            background: var(--home-container);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid rgba(0, 214, 70, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .about-text:hover {
+            border-color: rgba(0, 214, 70, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .about-text h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .about-text p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        .about-text ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .about-text li {
+            padding: 8px 0;
+            color: var(--text-gray);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .about-text li::before {
+            content: '▶';
+            color: var(--primary-green);
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--home-container);
+            border-radius: 15px;
+            padding: 40px;
+            border: 2px solid rgba(0, 214, 70, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skills-section:hover {
+            border-color: rgba(0, 214, 70, 0.2);
+        }
+
+        .skills-section h3 {
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .skills-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-green);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .skill-category h4 {
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-name {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-white);
+        }
+
+        .skill-name small {
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .skill-bar {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            height: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), #00aa38);
+            border-radius: 25px;
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+
+        .skill-percentage {
+            font-size: 0.9rem;
+            color: var(--primary-green);
+            float: right;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--menu-bg);
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .footer-content h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info li {
+            color: var(--text-white);
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-white);
+        }
+
+        /* Animation d'apparition */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-text,
+        .skills-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .skills-categories {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .about-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-content {
+                padding: 30px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-section h1 {
+                font-size: 2rem;
+            }
+
+            .skills-section h3 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .about-text,
+            .skills-section {
+                padding: 20px;
+            }
+        }
+
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--menu-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00aa38;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -28,99 +427,117 @@
             <h1>À PROPOS DE MOI</h1>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Je suis étudiant en BUT Informatique à Lannion, ce petit coin de Bretagne où l'on apprend à dompter les bases de données, jongler avec les algorithmes et apprivoiser l'apprentissage supervisé. Tout un programme ! Mais entre nous, rien ne vaut le terrain, la vraie vie, les problèmes à résoudre et les bugs qui surgissent au pire moment. J'ai envie de mettre les mains dans le cambouis – enfin, dans le code – et de voir comment tout cela se joue en entreprise.</p>
+                    <p>Je suis étudiant en BUT Informatique à Lannion, ce petit coin de Bretagne où l'on apprend à maîtriser les bases de données, à jongler avec les algorithmes et à comprendre l'intelligence artificielle. Tout un programme ! Mais entre nous, rien ne vaut la pratique sur le terrain, les vrais projets, les problèmes concrets à résoudre et les bugs qui surgissent au pire moment. J'ai envie de mettre les mains dans le cambouis – enfin, dans le code – et de découvrir comment tout cela se passe en entreprise.</p>
                     
-                    <h3>Mes études :</h3>
+                    <h3>Mon parcours scolaire :</h3>
                     <ul>
                         <li>2024 → 2027 : BUT Informatique à Lannion</li>
-                        <li>2022 → 2024 : FAC d'Angers double licence Maths/Informatique</li>
-                        <li>2019 → 2020 : Lycée Tristan Corbière BAC Général à Morlaix</li>
+                        <li>2022 → 2024 : Université d'Angers, double licence Mathématiques/Informatique</li>
+                        <li>2019 → 2022 : Lycée Tristan Corbière, Baccalauréat Général à Morlaix</li>
                     </ul>
                 </div>
                 <div class="about-text">
-                    <h3>Mes qualités :</h3>
+                    <h3>Mes principales qualités :</h3>
                     <ul>
                         <li>Autonomie</li>
-                        <li>Remise en question</li>
+                        <li>Capacité de remise en question</li>
                         <li>Curiosité</li>
-                        <li>Envie de bien faire</li>
+                        <li>Perfectionnisme</li>
                         <li>Maturité</li>
                     </ul>
                     
-                    <p>On dit de moi que je suis curieux, assidu, parfois un peu trop têtu. Un défaut ? Peut-être. Mais dans ce métier, insister,
-                         creuser et ne pas lâcher tant qu'on n'a pas trouvé la solution, ça peut servir.
-                          Malgré une aire de baroudeur russe à la barbe rousse, je suis consciencieux, méthodique mais également souple et adaptable.
-                           Je vous l'avoue, je suis timide et un peu bavard.
-                    </p>
+                    <p>On dit de moi que je suis curieux, assidu, et parfois un peu trop têtu. Un défaut ? Peut-être. Mais dans ce métier, persévérer, creuser et ne pas lâcher tant qu'on n'a pas trouvé la solution, ça peut servir. Malgré une allure de baroudeur russe à la barbe rousse, je suis consciencieux, méthodique mais également souple et adaptable. Je vous l'avoue, je suis parfois timide mais également bavard quand le sujet me passionne.</p>
                 </div>
             </div>
             
             <div class="skills-section">
-                <h3>MES CONNAISSANCES EN LOGICIELS</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <span class="skill-name">HTML & CSS</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85%"></div>
-                        </div>
-                        <span class="skill-percentage">85%</span>
-                    </div>
+                <h3>MES COMPÉTENCES TECHNIQUES</h3>
+                <div class="skills-categories">
                     
-                    <div class="skill-item">
-                        <span class="skill-name">PYTHON</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90%"></div>
+                    <!-- Développement Web -->
+                    <div class="skill-category">
+                        <h4>Développement Web</h4>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">HTML & CSS <small>(création de sites web)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                            <span class="skill-percentage">85%</span>
                         </div>
-                        <span class="skill-percentage">90%</span>
                     </div>
-                    
-                    <div class="skill-item">
-                        <span class="skill-name">JAVA</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80%"></div>
+
+                    <!-- Programmation -->
+                    <div class="skill-category">
+                        <h4>Programmation</h4>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">PYTHON <small>(programmation polyvalente)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                            <span class="skill-percentage">90%</span>
                         </div>
-                        <span class="skill-percentage">80%</span>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <span class="skill-name">SQL</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80%"></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">JAVA <small>(applications robustes)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                            <span class="skill-percentage">80%</span>
                         </div>
-                        <span class="skill-percentage">80%</span>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <span class="skill-name">C/C++</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80%"></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">C/C++ <small>(programmation système)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                            <span class="skill-percentage">80%</span>
                         </div>
-                        <span class="skill-percentage">80%</span>
                     </div>
-                    
-                    <div class="skill-item">
-                        <span class="skill-name">BASH</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="60%"></div>
+
+                    <!-- Base de données & Système -->
+                    <div class="skill-category">
+                        <h4>Base de données & Système</h4>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">SQL <small>(gestion de bases de données)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                            <span class="skill-percentage">80%</span>
                         </div>
-                        <span class="skill-percentage">60%</span>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <span class="skill-name">GIT</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="60%"></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">BASH <small>(automatisation Linux)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="60"></div>
+                            </div>
+                            <span class="skill-percentage">60%</span>
                         </div>
-                        <span class="skill-percentage">60%</span>
                     </div>
-                    
-                    <div class="skill-item">
-                        <span class="skill-name">UML</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90%"></div>
+
+                    <!-- Outils & Méthodes -->
+                    <div class="skill-category">
+                        <h4>Outils & Méthodes</h4>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">GIT <small>(gestion de versions)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="60"></div>
+                            </div>
+                            <span class="skill-percentage">60%</span>
                         </div>
-                        <span class="skill-percentage">90%</span>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">UML <small>(modélisation de projets)</small></span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                            <span class="skill-percentage">90%</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -130,12 +547,48 @@
         <div class="footer-content">
             <h2>Me contacter</h2>
             <ul class="contact-info">
-                <li>téléphone : 06 29 34 16 75</li>
+                <li>Téléphone : 06 29 34 16 75</li>
                 <li><a href="mailto:tom.conan1@gmail.com">tom.conan1@gmail.com</a></li>
             </ul>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Animation des barres de progression
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            skillBars.forEach(bar => {
+                const targetWidth = bar.getAttribute('data-width');
+                if (targetWidth) {
+                    // Démarrer à 0% puis animer vers la valeur cible
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = targetWidth + '%';
+                    }, 100);
+                }
+            });
+        }
+
+        // Animation lors du scroll pour les barres de compétences
+        function animateOnScroll() {
+            const skillsSection = document.querySelector('.skills-section');
+            const rect = skillsSection.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible && !skillsSection.classList.contains('animated')) {
+                skillsSection.classList.add('animated');
+                animateSkillBars();
+            }
+        }
+
+        // Lancer l'animation au chargement de la page
+        window.addEventListener('load', function() {
+            setTimeout(animateSkillBars, 500);
+        });
+
+        // Lancer l'animation lors du scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
 </body>
 </html>
