@@ -2,9 +2,8 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Portfolio website for CONAN Tom",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mon_premier_script": "echo hello world"
   },
   "repository": {
     "type": "git",
@@ -16,5 +15,6 @@
     "url": "https://github.com/BobOriginal/portfolio/issues"
   },
   "homepage": "https://github.com/BobOriginal/portfolio#readme",
-  "type":"module"
+  "type": "module",
+  "private": true
 }
